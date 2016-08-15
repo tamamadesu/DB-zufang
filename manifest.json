@@ -1,0 +1,30 @@
+{
+	"name":"租房",
+	"version":"1.0.0",
+	"description":"豆瓣小组租房",
+	"icons": {
+      "128": "/icons/zufang.png",
+      "16": "/icons/zufang.png",
+      "48": "/icons/zufang.png"
+   	},
+	"permissions":[
+	    "<all_urls>",
+	    "webRequestBlocking",
+	    "webRequest",
+	    "browsingData",
+	    "downloads",
+		"tabs","notifications","http://*/*","https://*/*"
+	],
+	"web_accessible_resources": [
+    	"icons/zufang.png"
+  	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"browser_action":{
+		"default_icon":"icons/zufang.png",
+		"default_popup":"popup.html"
+	},
+	"background":{
+		"page":"background.html"
+	},
+	"manifest_version":2
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <title>popup</title>
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" media="all">
+</head>
+
+<body>
+    <style>
+    .wrapper {
+        width: 600px;
+        height: 400px;
+    }
+
+    .load-spinner {
+        display: none;
+        width: 30px;
+        height: 30px;
+        margin: 0px auto;
+        background-color: #333;
+        border-radius: 100%;
+        -webkit-animation: scaleout 1s infinite ease-in-out;
+        animation: scaleout 1s infinite ease-in-out;
+    }
+    #list{
+        padding-top: 55px;
+    }
+    .panel{
+        margin-left: 10px;
+    }
+    .imgs{
+        padding: 5px;
+        display: none;
+        width: 600px;
+        height: 400px;
+        overflow-x: scroll;
+    }
+    .imgs img{
+        float: left;
+        margin-bottom: 10px;
+    }
+    .show-imgs:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    @-webkit-keyframes scaleout {
+        0% {
+            -webkit-transform: scale(0);
+        }
+        100% {
+            -webkit-transform: scale(1);
+            opacity: 0;
+        }
+    }
+
+    @keyframes scaleout {
+        0% {
+            transform: scale(0);
+            -webkit-transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+            -webkit-transform: scale(1);
+            opacity: 0;
+        }
+    }
+    </style>
+    <div class="wrapper">
+        <div class="navbar" style="position: fixed;left: 0;top: 0;width:100%;">
+            <div class="navbar-inner">
+                <span class="brand" href="#">豆瓣租房小组API</span>
+                <form class="navbar-search pull-right search-query" action="#">
+                  <input type="text" name="filter" placeholder="Filter">
+                </form>
+            </div>
+        </div>
+        <div id="list">
+            <div class="panel">
+                <div class="btn-group">
+                      <button data-name="beijingzufang" class="btn active">北京租房</button>
+                      <button data-name="zhufang" class="btn">北京无中介租房</button>
+                      <button data-name="26926" class="btn">北京租房豆瓣</button>
+                      <button data-name="279962" class="btn">租房（无中介）</button>
+                      <button data-name="sweethome" class="btn">北京租房（密探）</button>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>发布者</th>
+                        <th width="50%">标题</th>
+                        <th>时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="load-spinner"></div>
+            <!-- <div class="pagination" style="position: fixed;right: 0;bottom: 0;">
+              <ul>
+                <li><a href="#">Prev</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">Next</a></li>
+              </ul>
+            </div> -->
+        </div>
+    </div>
+    <script src="js/popup.js?v=1.1"></script>
+</body>
+
+</html>
