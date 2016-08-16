@@ -37,18 +37,19 @@ var Chrome = {
     }
 };
 
-var keywords = ['九龙山','七号线','14号线','6号线','7号线','独卫'];
-var urls     = ['http://api.douban.com/v2/group/beijingzufang/topics'];
+var keywords = ['九龙山','七号线','14号线','7号线','独卫','四惠','九龙'];
+var names     = ['beijingzufang','zhufang','279962','26926','sweethome'];
 var crt_ids  = [];
 var titles = [];
 
-var autoNotice = function(keywords,urls){
+var autoNotice = function(keywords,names){
 
     crt_ids  = [];
-    titles = [];    
+    titles = [];
 
-    urls.map(function(url){
-        $.get(url,function(data){
+    names.map(function(id){
+        let crt_url = `http://api.douban.com/v2/group/${id}/topics`;
+        $.get(crt_url,function(data){
             $.each(data.topics,function(i,data){
                 for(var j=0;j<keywords.length;j++){
                     var string = data.title + data.content;
@@ -68,7 +69,6 @@ var autoNotice = function(keywords,urls){
     setTimeout(function(){
 
         var local_ids = localStorage.getItem('view_ids') || '';
-        console.log(crt_ids);
         if(crt_ids.length){
             for(var k=0;k<crt_ids.length;k++){
                 if(local_ids.indexOf(crt_ids[k]) == -1){
@@ -76,10 +76,8 @@ var autoNotice = function(keywords,urls){
                     break;
                 }
             }
-            
-            
         }
-        autoNotice(keywords,urls);
+        autoNotice(keywords,names);
     },10000);
 
 };
@@ -96,7 +94,7 @@ chrome.notifications.onClicked.addListener(function(id){
     chrome.notifications.clear(id);
 });
 
-autoNotice(keywords,urls);
+autoNotice(keywords,names);
 
 
 
