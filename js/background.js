@@ -41,7 +41,7 @@ var keywords = ['九龙山','七号线','14号线','7号线','独卫','四惠','
 var names     = ['beijingzufang','zhufang','279962','26926','sweethome'];
 var crt_ids  = [];
 var titles = [];
-var timer  = 30*1000; // 半分钟一次
+var timer  = 60*1000; // 半分钟一次
 
 var autoNotice = function(keywords,names){
 
