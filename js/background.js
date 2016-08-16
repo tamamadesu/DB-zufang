@@ -37,7 +37,7 @@ var Chrome = {
     }
 };
 
-var keywords = ['九龙山','七号线','14号线','7号线','独卫','四惠','九龙'];
+var keywords = ['九龙山','七号线','14号线','7号线','独卫','四惠','九龙','整租','一室','一室一厅'];
 var names     = ['beijingzufang','zhufang','279962','26926','sweethome'];
 var crt_ids  = [];
 var titles = [];
