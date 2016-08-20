@@ -37,6 +37,11 @@ var Chrome = {
     }
 };
 
+function playMusic(){
+    $("#player")[0].play();
+}
+
+
 var keywords = ['九龙山','七号线','14号线','7号线','独卫','四惠','九龙','整租','一室','一室一厅'];
 var names     = ['beijingzufang','zhufang','279962','26926','sweethome'];
 var crt_ids  = [];
@@ -74,6 +79,7 @@ var autoNotice = function(keywords,names){
             for(var k=0;k<crt_ids.length;k++){
                 if(local_ids.indexOf(crt_ids[k]) == -1){
                     Chrome.createNotification(titles[k]);
+                    playMusic();
                     break;
                 }
             }
