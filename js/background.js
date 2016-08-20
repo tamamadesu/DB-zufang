@@ -37,11 +37,12 @@ var Chrome = {
     }
 };
 
-var keywords = ['九龙山','七号线','14号线','7号线','独卫','四惠','九龙','整租','一室','一室一厅'];
-var names     = ['beijingzufang','zhufang','279962','26926','sweethome'];
+var keywords = ['独卫','九龙山','7号线','七号线','14号线','八里庄','慈云寺','四惠','九龙','整租','一室','一室一厅','二室','2室'];
+var names    = ['beijingzufang','zhufang','279962','opking','sweethome'];
 var crt_ids  = [];
-var titles = [];
-var timer  = 60*1000; // 半分钟一次
+var titles   = [];
+var block_user = ['小房东','Chase丶Am']; //屏蔽用户
+var timer    = 60*1000; // 一分钟一次
 
 var autoNotice = function(keywords,names){
 
@@ -56,8 +57,10 @@ var autoNotice = function(keywords,names){
                     var string = data.title + data.content;
                     // 包括关键字 并且发布时间不能大于两天
                     if(string.indexOf(keywords[j]) > -1 && (new Date(data.updated) - new Date(data.created) < 48*3600000)){
-                        titles.push(data.title);
-                        crt_ids.push(data.id);
+                        if(block_user.indexOf(data.author.name) == -1){
+                            titles.push(data.title);
+                            crt_ids.push(data.id);
+                        };
                         break;
                     }
                 }
@@ -73,7 +76,7 @@ var autoNotice = function(keywords,names){
         if(crt_ids.length){
             for(var k=0;k<crt_ids.length;k++){
                 if(local_ids.indexOf(crt_ids[k]) == -1){
-                    Chrome.createNotification(titles[k]);
+                    Chrome.createNotification(titles.join("\n"));
                     break;
                 }
             }
@@ -82,7 +85,7 @@ var autoNotice = function(keywords,names){
     },timer);
 
 };
-localStorage.setItem('view_ids','');
+// localStorage.setItem('view_ids','');
 
 chrome.notifications.onClicked.addListener(function(id){
     var local_ids = localStorage.getItem('view_ids') || '';
