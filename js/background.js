@@ -97,7 +97,7 @@ var autoNotice = function(keywords,names){
     },timer);
 
 };
-// localStorage.setItem('view_ids','');
+localStorage.setItem('view_ids','');
 
 chrome.notifications.onClicked.addListener(function(id){
     var local_ids = localStorage.getItem('view_ids') || '';
