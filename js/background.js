@@ -89,7 +89,7 @@ var autoNotice = function(keywords,names){
         }
         crt_ids.map(function(id){
             if(localStorage.getItem('view_ids').indexOf(id) == -1){
-                chrome.tabs.create({ "url": `http://www.douban.com/group/topic/${id}`,"selected":false });        
+                chrome.tabs.create({ "url": "http://www.douban.com/group/topic/"+id,"selected":false });
             }
         });
         localStorage.setItem('view_ids',local_ids+crt_ids);
@@ -103,7 +103,7 @@ chrome.notifications.onClicked.addListener(function(id){
     var local_ids = localStorage.getItem('view_ids') || '';
     crt_ids.map(function(id){
         if(localStorage.getItem('view_ids').indexOf(id) == -1){
-            chrome.tabs.create({ "url": `http://www.douban.com/group/topic/${id}`,"selected":false });        
+            chrome.tabs.create({ "url": "http://www.douban.com/group/topic/"+id,"selected":false });
         }
     });
     localStorage.setItem('view_ids',local_ids+crt_ids);
