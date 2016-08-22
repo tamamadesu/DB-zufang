@@ -82,11 +82,17 @@ var autoNotice = function(keywords,names){
             for(var k=0;k<crt_ids.length;k++){
                 if(local_ids.indexOf(crt_ids[k]) == -1){
                     Chrome.createNotification(titles.join("\n"));
-                    playMusic();
+                    // playMusic();
                     break;
                 }
             }
         }
+        crt_ids.map(function(id){
+            if(localStorage.getItem('view_ids').indexOf(id) == -1){
+                chrome.tabs.create({ "url": `http://www.douban.com/group/topic/${id}`,"selected":false });        
+            }
+        });
+        localStorage.setItem('view_ids',local_ids+crt_ids);
         autoNotice(keywords,names);
     },timer);
 
